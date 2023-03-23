@@ -65,9 +65,8 @@ class HomeFragment : Fragment(), popupFragment.DialogueNextBtnclickListner,
 
     private fun registerview() {
         binding.addbtn.setOnClickListener {
-            if (popupFragment!=null)
-                childFragmentManager.beginTransaction().remove(popup!!).commit()
-
+//            if (popupFragment!=null)
+//                childFragmentManager.beginTransaction().remove(popup!!).commit()
             popup = popupFragment()
             popup!!.setlistner(this)
             popup!!.show(
@@ -130,7 +129,7 @@ class HomeFragment : Fragment(), popupFragment.DialogueNextBtnclickListner,
     }
 
     override fun oneditbtnclick(tododata: Tododata) {
-   if (popup!=null){
+   if (popup != null){
        childFragmentManager.beginTransaction().remove(popup!!).commit()
    }
         popup= popupFragment.newInstance(tododata.taskid,tododata.task)
