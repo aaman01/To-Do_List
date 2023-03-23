@@ -37,8 +37,8 @@ class SignInFragment : Fragment() {
             navControl.navigate(R.id.action_signInFragment_to_sign_UpFragment3)
         }
         binding.signinbtn.setOnClickListener {
-            val email = binding.emailet.toString().trim()
-            val password  = binding.passet.toString().trim()
+            val email = binding.emailet.text.toString().trim()
+            val password  = binding.passet.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty()){
 

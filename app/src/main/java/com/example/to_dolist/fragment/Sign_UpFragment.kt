@@ -1,6 +1,7 @@
 package com.example.to_dolist.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,17 +39,25 @@ class Sign_UpFragment : Fragment() {
         binding.authtext.setOnClickListener{
             navControl.navigate(R.id.action_sign_UpFragment_to_signInFragment)
         }
-      binding.signupbtn.setOnClickListener {
-          val email = binding.emailet.toString().trim()
-          val password  = binding.passet.toString().trim()
-          val verifypass=binding.verifypass.toString().trim()
+      binding.Signupbtn.setOnClickListener {
+
+          val email = binding.emailet.text.toString().trim()
+          val password  = binding.passet.text.toString().trim()
+          val verifypass= binding.verifypass.text.toString().trim()
+
           if (email.isNotEmpty() && password.isNotEmpty() && verifypass.isNotEmpty()){
-              if(password==verifypass){
-                  auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(OnCompleteListener{
+
+              if(password == verifypass){
+
+                  auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(OnCompleteListener
+                  {
+
                       if (it.isSuccessful){
+
                           Toast.makeText(context,"Registered Successfully !!",Toast.LENGTH_SHORT).show()
                           navControl.navigate(R.id.action_sign_UpFragment_to_homeFragment)
                       }else{
+
                           Toast.makeText(context,"Try Again !!",Toast.LENGTH_SHORT).show()
                       }
 
@@ -57,6 +66,8 @@ class Sign_UpFragment : Fragment() {
 
 
 
+              }else{
+                  Toast.makeText(context,"Password not matching!!",Toast.LENGTH_SHORT).show()
               }
           }
       }
